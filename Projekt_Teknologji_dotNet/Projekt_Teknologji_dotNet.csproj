@@ -169,14 +169,33 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MakinatsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TipisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Konstante.cs" />
+    <Compile Include="Migrations\202201181626517_new.cs" />
+    <Compile Include="Migrations\202201181626517_new.Designer.cs">
+      <DependentUpon>202201181626517_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201181637455_newTables.cs" />
+    <Compile Include="Migrations\202201181637455_newTables.Designer.cs">
+      <DependentUpon>202201181637455_newTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201181826508_Rezervuar.cs" />
+    <Compile Include="Migrations\202201181826508_Rezervuar.Designer.cs">
+      <DependentUpon>202201181826508_Rezervuar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Makinat.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rezervimet.cs" />
+    <Compile Include="Models\Tipi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -237,9 +256,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Makinats\Create.cshtml" />
+    <Content Include="Views\Makinats\Delete.cshtml" />
+    <Content Include="Views\Makinats\Details.cshtml" />
+    <Content Include="Views\Makinats\Edit.cshtml" />
+    <Content Include="Views\Makinats\Index.cshtml" />
+    <Content Include="Views\Tipis\Create.cshtml" />
+    <Content Include="Views\Tipis\Delete.cshtml" />
+    <Content Include="Views\Tipis\Details.cshtml" />
+    <Content Include="Views\Tipis\Edit.cshtml" />
+    <Content Include="Views\Tipis\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Imazhet\Uploaded\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -253,6 +283,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202201181626517_new.resx">
+      <DependentUpon>202201181626517_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201181637455_newTables.resx">
+      <DependentUpon>202201181637455_newTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201181826508_Rezervuar.resx">
+      <DependentUpon>202201181826508_Rezervuar.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

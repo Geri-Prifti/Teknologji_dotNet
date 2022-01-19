@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using Projekt_Teknologji.NET.Models;
+using Projekt_Teknologji_dotNet.Models;
 
 namespace Projekt_Teknologji.NET.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return View();
+            return View(db.Tipi.ToList());
         }
 
         public ActionResult About()

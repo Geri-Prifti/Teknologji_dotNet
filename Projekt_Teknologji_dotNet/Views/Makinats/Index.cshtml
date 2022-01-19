@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Projekt_Teknologji_dotNet.Models.Makinat>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="all-content">
+    <div class="max-width-c">
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipi.Emri)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modeli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pershkrimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vit_Prodhimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kosto1Dite)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IMG1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IMG2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IMG3)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipi.Emri)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modeli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pershkrimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vit_Prodhimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kosto1Dite)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IMG1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IMG2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IMG3)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

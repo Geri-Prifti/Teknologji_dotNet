@@ -20,6 +20,9 @@ namespace Projekt_Teknologji_dotNet.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Makinat> Makinat { get; set; }
+        public DbSet<Tipi> Tipi { get; set; }
+        public DbSet<Rezervimet> Rezervimet { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

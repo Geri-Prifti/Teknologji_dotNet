@@ -5,9 +5,8 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Projekt_Teknologji.NET.Models
+namespace Projekt_Teknologji_dotNet.Models
 {
-    [Table("Contact")]
     public class Contact
     {
         [Required(ErrorMessage = "Ju lutem plotesoni fushen!")]
