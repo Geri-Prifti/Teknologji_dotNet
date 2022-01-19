@@ -270,3 +270,30 @@ footer p {
         text-align: center;
     }
 }
+/*Katalogu styling*/
+.katalogu-content {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-rows: 200px 200px 200px;
+    grid-gap: 30px;
+}
+.katalogu-content .Tip-cart {
+    border: 2px solid black;
+    border-radius: 7px;
+    padding: 1em;
+    height: 200px;
+}
+.katalogu-content .Tip-cart .img-content {
+    width: 100%;
+    height: 120px;
+    border: 1px solid;
+}
+.katalogu-content .Tip-cart .ActionLink-content {
+    width: 100%;
+    border: 1px solid;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 22px;
+}

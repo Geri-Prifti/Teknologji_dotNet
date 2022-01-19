@@ -14,34 +14,18 @@
 <div class="main-content">
     <div class="max-width-c">
         <h2>Katalogu i makinave</h2>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Emri)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Ikona)
-                </th>
-                <th></th>
-            </tr>
-
+        <div class="katalogu-content">
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Emri)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ikona)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit",  new { id = item.ID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                    </td>
-                </tr>
+            <div class="Tip-cart">
+                <div class="img-content">
+                    <img src="#" alt="@item.Emri" />
+                </div>
+                <div class="ActionLink-content">
+                    @Html.ActionLink(item.Emri, "Index", "Makinats")
+                </div>
+            </div>
             }
-
-        </table>
+        </div>
     </div>
 </div>

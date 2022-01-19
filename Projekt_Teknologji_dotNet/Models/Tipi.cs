@@ -19,5 +19,10 @@ namespace Projekt_Teknologji_dotNet.Models
         [Required]
         [Display(Name = "Ikona")]
         public string Ikona { get; set; }
+
+        public static implicit operator Tipi(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
