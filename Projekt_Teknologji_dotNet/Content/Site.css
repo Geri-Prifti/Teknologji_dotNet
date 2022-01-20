@@ -104,11 +104,6 @@ form {
         color: white;
     }
 
-.main-content {
-    border: 1px solid;
-    height: 100vh;
-}
-
     .main-content h2 {
         text-align: center;
     }

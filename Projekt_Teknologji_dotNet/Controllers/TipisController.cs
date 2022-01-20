@@ -47,11 +47,13 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create (Tipi tipi, HttpPostedFileBase EmriImazhit)
+        public ActionResult Create (Tipi tipi, HttpPostedFileBase Ikona)
         {
             if (ModelState.IsValid)
             {
-                db.Tipi.Add(new Tipi { Emri = tipi.Emri, Ikona = tipi.Ikona});
+                WebImage img = new WebImage(Ikona.InputStream);
+                img.Save(Konstante.PathImg + Ikona.FileName);
+                db.Tipi.Add(new Tipi { Emri = tipi.Emri, Ikona = Ikona.FileName});
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
