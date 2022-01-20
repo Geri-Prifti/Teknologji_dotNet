@@ -22,7 +22,7 @@
                     <img src="#" alt="@item.Emri" />
                 </div>
                 <div class="ActionLink-content">
-                    @Html.ActionLink(item.Emri, "Index", "Makinats")
+                    <a href="Makinats/Index?tipi=@item.Emri">@item.Emri</a>
                 </div>
             </div>
             }

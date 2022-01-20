@@ -27,13 +27,9 @@ namespace Projekt_Teknologji_dotNet.Models
         [Required]
         [Display(Name = "Kostoja per 1 dite")]
         public decimal Kosto1Dite { get; set; }
-        [Required]
-        [Display(Name = "Imazhi 1")]
-        public string IMG1 { get; set; }
-        [Display(Name = "Imazhi 2")]
-        public string IMG2 { get; set; }
-        [Display(Name = "Imazhi 3")]
-        public string IMG3 { get; set; }
+        
+        [Display(Name = "Imazhi ")]
+        public string IMG { get; set; }
 
         public int? TipiID { get; set; }
         public virtual Tipi Tipi { get; set; }

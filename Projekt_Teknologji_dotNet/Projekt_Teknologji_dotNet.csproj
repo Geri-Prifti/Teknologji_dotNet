@@ -188,6 +188,14 @@
     <Compile Include="Migrations\202201181826508_Rezervuar.Designer.cs">
       <DependentUpon>202201181826508_Rezervuar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201200806517_removeField.cs" />
+    <Compile Include="Migrations\202201200806517_removeField.Designer.cs">
+      <DependentUpon>202201200806517_removeField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201200816278_modify.cs" />
+    <Compile Include="Migrations\202201200816278_modify.Designer.cs">
+      <DependentUpon>202201200816278_modify.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -293,6 +301,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201181826508_Rezervuar.resx">
       <DependentUpon>202201181826508_Rezervuar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201200806517_removeField.resx">
+      <DependentUpon>202201200806517_removeField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201200816278_modify.resx">
+      <DependentUpon>202201200816278_modify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

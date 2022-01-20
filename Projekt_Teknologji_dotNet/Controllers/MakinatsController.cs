@@ -15,9 +15,13 @@ namespace Projekt_Teknologji_dotNet.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Makinats
-        public ActionResult Index()
+        public ActionResult Index(string tipi)
         {
             var makinat = db.Makinat.Include(m => m.Tipi);
+            if (!string.IsNullOrEmpty(tipi))
+            {
+                makinat = makinat.Where(m => m.Tipi.Emri == tipi);
+            }
             return View(makinat.ToList());
         }
 
@@ -48,7 +52,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG1,IMG2,IMG3,TipiID,ERezervuar")] Makinat makinat)
+        public ActionResult Create([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG,TipiID,ERezervuar")] Makinat makinat)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +86,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG1,IMG2,IMG3,TipiID")] Makinat makinat)
+        public ActionResult Edit([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG,TipiID")] Makinat makinat)
         {
             if (ModelState.IsValid)
             {
