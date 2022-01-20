@@ -1,70 +1,39 @@
 ﻿@model IEnumerable<Projekt_Teknologji_dotNet.Models.Makinat>
 
+@Styles.Render("~/Content/css")
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="all-content">
     <div class="max-width-c">
-        <h2>Index</h2>
+        <h2>Makinat</h2>
 
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Tipi.Emri)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Modeli)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Pershkrimi)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Vit_Prodhimi)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Kosto1Dite)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IMG)
-                </th>
-                
-                <th></th>
-            </tr>
-
+        <div class="car-content">
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tipi.Emri)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Modeli)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Pershkrimi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Vit_Prodhimi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Kosto1Dite)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IMG)
-                    </td>
-                    
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                    </td>
-                </tr>
+                <div class="car-cart">
+                    <div class="img-content">
+                        <img src="#" alt="@Html.DisplayFor(modelItem => item.IMG)" />
+                    </div>
+                    <div class="main-content-cart">
+                        <div class="a-con">
+                            <div>@Html.LabelFor(modelItem => item.Modeli): @Html.DisplayFor(modelItem => item.Modeli)</div>
+                            <div>@Html.LabelFor(modelItem => item.Tipi.Emri): @Html.DisplayFor(modelItem => item.Tipi.Emri)</div>
+                        </div>
+                        <div class="b-con">
+                            <div>@Html.LabelFor(modelItem => item.Vit_Prodhimi): @Html.DisplayFor(modelItem => item.Vit_Prodhimi)</div>
+                            <div>@Html.LabelFor(modelItem => item.Kosto1Dite): @Html.DisplayFor(modelItem => item.Kosto1Dite)$</div>
+                        </div>
+                        <div class="button-area">
+                            @Html.ActionLink("See More", "Details", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
             }
-
-        </table>
+        </div>
     </div>
 </div>

@@ -14,7 +14,17 @@
     <div class="navbar-content">
         <div class="max-width-c">
             <nav class="container-nav">
-                <div class="logo"><i class="fas fa-car">@Html.ActionLink("ALBARENT", "Index", "Home")</i></div>
+                <div class="left-content">
+                    <div class="logo">
+                        <i class="fas fa-car">@Html.ActionLink("ALBARENT", "Index", "Home")</i>
+                    </div>
+                    @using (Html.BeginForm("Kerko", "Home", FormMethod.Get))
+                    {
+                        <input type="text" name="q" class="s-input" placeholder="Kerko" />
+                        <input type="submit" value="Kerko" class="s-btn" />
+                    }
+                </div>
+
                 <div class="right-content">
                     <ul>
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -49,8 +59,8 @@
                 <div class="fb-right">&copy; @DateTime.Now.Year  -  Te gjitha te drejtat e rezervuara</div>
                 <div class="fb-left">
                     <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/adii_korici__/" class="instagram"><i class="fa fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/admirim-kori%C3%A7i-439115172/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
                 </div>
             </div>
         </div>

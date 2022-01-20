@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Projekt_Teknologji_dotNet.Models.Makinat>
+@{
+    ViewBag.Title = "Kerko";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="all-content">
+    <div class="max-width-c">
+<h2>Rezultatet e kerkimit</h2>
+@if (ViewBag.msg != null)
+{
+    <h2>@ViewBag.msg</h2>
+}
+else
+{
+    <div class="car-content">
+        @foreach (var item in Model)
+        {
+            <div class="car-cart">
+                <div class="img-content">
+                    <img src="#" alt="@Html.DisplayFor(modelItem => item.IMG)" />
+                </div>
+                <div class="main-content-cart">
+                    <div class="a-con">
+                        <div>@Html.LabelFor(modelItem => item.Modeli): @Html.DisplayFor(modelItem => item.Modeli)</div>
+                        <div>@Html.LabelFor(modelItem => item.Tipi.Emri): @Html.DisplayFor(modelItem => item.Tipi.Emri)</div>
+                    </div>
+                    <div class="b-con">
+                        <div>@Html.LabelFor(modelItem => item.Vit_Prodhimi): @Html.DisplayFor(modelItem => item.Vit_Prodhimi)</div>
+                        <div>@Html.LabelFor(modelItem => item.Kosto1Dite): @Html.DisplayFor(modelItem => item.Kosto1Dite)$</div>
+                    </div>
+                    <div class="button-area">
+                        @Html.ActionLink("See More", "Details", "Makinats", new { id = item.ID }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+        </div>
+    </div>
+

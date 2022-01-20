@@ -45,5 +45,17 @@ namespace Projekt_Teknologji.NET.Controllers
 
             return View();
         }
+        public ActionResult Kerko(string q)
+        {
+            var makinat = db.Makinat.Include(m => m.Tipi);
+            if (!string.IsNullOrEmpty(q))
+            {
+                makinat = makinat.Where(m => m.Modeli == q);
+            } else
+            {
+                ViewBag.msg = "Nuk u gjete asnje rezultat";
+            }
+            return View(makinat.ToList());
+        }
     }
 }

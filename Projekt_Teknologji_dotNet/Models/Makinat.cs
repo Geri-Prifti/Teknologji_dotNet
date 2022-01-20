@@ -20,12 +20,12 @@ namespace Projekt_Teknologji_dotNet.Models
         [Display(Name = "Pershkrimi")]
         public string Pershkrimi { get; set; }
         [Required]
-        [Display(Name = "Viti i prodhimit")]
+        [Display(Name = "V.Prodhimit")]
         public int Vit_Prodhimi { get; set; }
         [Required]
         public bool ERezervuar { get; set; }
         [Required]
-        [Display(Name = "Kostoja per 1 dite")]
+        [Display(Name = "Pagesa/D")]
         public decimal Kosto1Dite { get; set; }
         
         [Display(Name = "Imazhi ")]

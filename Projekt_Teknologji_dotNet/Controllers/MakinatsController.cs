@@ -41,6 +41,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         }
 
         // GET: Makinats/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.TipiID = new SelectList(db.Tipi, "ID", "Emri");
@@ -50,6 +51,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // POST: Makinats/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG,TipiID,ERezervuar")] Makinat makinat)

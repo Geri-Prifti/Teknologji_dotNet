@@ -274,6 +274,7 @@
     <Content Include="Views\Tipis\Details.cshtml" />
     <Content Include="Views\Tipis\Edit.cshtml" />
     <Content Include="Views\Tipis\Index.cshtml" />
+    <Content Include="Views\Home\Kerko.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

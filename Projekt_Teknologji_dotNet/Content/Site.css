@@ -118,6 +118,22 @@ form {
     align-items: center;
     width: 100%;
 }
+.container-nav .left-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+}
+.container-nav .left-content form {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+.container-nav .left-content form .s-input {
+    width: 130px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
 
 .right-content {
     width: 55%;
@@ -272,23 +288,56 @@ footer p {
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
     grid-template-rows: 200px 200px 200px;
-    grid-gap: 30px;
+    grid-gap: 70px;
 }
-.katalogu-content .Tip-cart {
-    border: 2px solid black;
+.Tip-cart {
+    border: 1px solid gray;
     border-radius: 7px;
     padding: 1em;
     height: 200px;
+    box-shadow: 5px 10px 18px #888888;
 }
-.katalogu-content .Tip-cart .img-content {
+.img-content {
     width: 100%;
     height: 120px;
     border: 1px solid;
 }
 .katalogu-content .Tip-cart .ActionLink-content {
     width: 100%;
-    border: 1px solid;
+    border: 1px solid green;
+    border-radius: 8px;
     text-align: center;
     margin-top: 20px;
     font-size: 22px;
+}
+/*Car styling*/
+.car-content {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-rows: 270px 270px 270px 270px;
+    grid-gap: 30px;
+}
+
+.car-cart {
+    border: 1px solid gray;
+    border-radius: 7px;
+    padding: 1em;
+    height: 270px;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+.main-content-cart .a-con, .b-con {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    font-size: 14px;
+}
+.main-content-cart .button-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
 }
