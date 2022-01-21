@@ -37,6 +37,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         }
 
         // GET: Rezervimet/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.KlientID = new SelectList(db.Klient, "ID", "Username");
@@ -47,14 +48,43 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // POST: Rezervimet/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Date_Rezervimi,Date_kthimi,Pagesa_totale,KlientID,MakinatID")] Rezervimet rezervimet)
+        public ActionResult Create(Rezervimet rezervimet, int? makineId)
         {
             if (ModelState.IsValid)
             {
-                db.Rezervimet.Add(rezervimet);
+                var user = System.Web.HttpContext.Current.User.Identity.Name;
+                var klient = db.Klient.Where(m => m.Username == user);
+                var makine = db.Makinat.Where(m => m.ID == makineId);
+                makine.ToList();
+                klient.ToList();
+                decimal pagesDite = 0;
+                foreach(var item in makine)
+                {
+                    if(item.ERezervuar == true)
+                    {
+                        ViewBag.msg = "Error";
+                    }
+
+                    pagesDite = item.Kosto1Dite;
+                }
+                DateTime dt1 = rezervimet.Date_Rezervimi;
+                DateTime dt2 = rezervimet.Date_kthimi;
+                TimeSpan span = dt2.Subtract(dt1);
+                decimal spanSecs = (span.Hours * 3600) + (span.Minutes * 60) + span.Seconds;
+                decimal spanPart = spanSecs / 86400M;
+                decimal result2 = span.Days + spanPart;
+                decimal result3 = result2 * pagesDite;
+                var klientId = 0;
+                foreach (var item in klient)
+                {
+                    klientId = item.ID;   
+                }
+                db.Rezervimet.Add(new Rezervimet { Date_Rezervimi = rezervimet.Date_Rezervimi, Date_kthimi = rezervimet.Date_kthimi, Pagesa_totale = result3, KlientID = klientId, MakinatID = makineId });
                 db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
 
