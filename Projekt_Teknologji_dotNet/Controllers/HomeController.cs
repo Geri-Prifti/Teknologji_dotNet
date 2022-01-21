@@ -50,11 +50,16 @@ namespace Projekt_Teknologji.NET.Controllers
             var makinat = db.Makinat.Include(m => m.Tipi);
             if (!string.IsNullOrEmpty(q))
             {
-                makinat = makinat.Where(m => m.Modeli == q);
+                makinat = makinat.Where(m => m.Modeli == q); 
+                if(makinat.Count() == 0)
+                {
+                    ViewBag.msg = "Nuk u gjete asnje rezultat";
+                }
             } else
             {
                 ViewBag.msg = "Nuk u gjete asnje rezultat";
             }
+            ViewBag.msg2 = q;
             return View(makinat.ToList());
         }
     }

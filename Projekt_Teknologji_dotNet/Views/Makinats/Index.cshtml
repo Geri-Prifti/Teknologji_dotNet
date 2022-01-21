@@ -7,7 +7,14 @@
 }
 <div class="all-content">
     <div class="max-width-c">
-        <h2>Makinat</h2>
+        @if (ViewBag.msg != null)
+        {
+            <h2>@ViewBag.msg</h2>
+        }
+        else
+        {
+
+        <h2>Makinat: @ViewBag.msg2</h2>
 
         <p>
             @Html.ActionLink("Create New", "Create")
@@ -26,7 +33,7 @@
                         </div>
                         <div class="b-con">
                             <div>@Html.LabelFor(modelItem => item.Vit_Prodhimi): @Html.DisplayFor(modelItem => item.Vit_Prodhimi)</div>
-                            <div>@Html.LabelFor(modelItem => item.Kosto1Dite): @Html.DisplayFor(modelItem => item.Kosto1Dite)$</div>
+                            <div>@Html.LabelFor(modelItem => item.Kosto1Dite): @Html.DisplayFor(modelItem => item.Kosto1Dite)£</div>
                         </div>
                         <div class="button-area">
                             @Html.ActionLink("See More", "Details", new { id = item.ID }, new { @class = "btn btn-primary" })
@@ -35,5 +42,6 @@
                 </div>
             }
         </div>
+        }
     </div>
 </div>

@@ -23,6 +23,7 @@ namespace Projekt_Teknologji_dotNet.Models
         public DbSet<Makinat> Makinat { get; set; }
         public DbSet<Tipi> Tipi { get; set; }
         public DbSet<Rezervimet> Rezervimet { get; set; }
+        public DbSet<Klient> Klient { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

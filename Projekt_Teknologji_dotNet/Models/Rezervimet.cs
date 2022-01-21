@@ -23,5 +23,13 @@ namespace Projekt_Teknologji_dotNet.Models
 
         [Required]
         public decimal Pagesa_totale { get; set; }
+
+        [Display(Name = "Klienti")]
+        public int? KlientID { get; set; }
+        public virtual Klient Klient { get; set; }
+
+        [Display(Name = "Makina")]
+        public int? MakinatID { get; set; }
+        public virtual Makinat Makinat { get; set; }
     }
 }

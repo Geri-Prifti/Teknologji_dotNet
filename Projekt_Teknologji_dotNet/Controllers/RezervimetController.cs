@@ -10,124 +10,116 @@ using Projekt_Teknologji_dotNet.Models;
 
 namespace Projekt_Teknologji_dotNet.Controllers
 {
-    public class MakinatsController : Controller
+    public class RezervimetController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Makinats
-        public ActionResult Index(string tipi)
+        // GET: Rezervimet
+        public ActionResult Index()
         {
-            var makinat = db.Makinat.Include(m => m.Tipi);
-            if (!string.IsNullOrEmpty(tipi))
-            {
-                makinat = makinat.Where(m => m.Tipi.Emri == tipi);
-                
-                if(makinat.Count() == 0)
-                {
-                    ViewBag.msg = "Nuk u gjete asnje makine per tipin: " + tipi;
-                }
-            }
-            ViewBag.msg2 = tipi;
-            return View(makinat.ToList());
+            var rezervimet = db.Rezervimet.Include(r => r.Klient).Include(r => r.Makinat);
+            return View(rezervimet.ToList());
         }
 
-        // GET: Makinats/Details/5
+        // GET: Rezervimet/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Makinat makinat = db.Makinat.Find(id);
-            if (makinat == null)
+            Rezervimet rezervimet = db.Rezervimet.Find(id);
+            if (rezervimet == null)
             {
                 return HttpNotFound();
             }
-            return View(makinat);
+            return View(rezervimet);
         }
 
-        // GET: Makinats/Create
-        [Authorize]
+        // GET: Rezervimet/Create
         public ActionResult Create()
         {
-            ViewBag.TipiID = new SelectList(db.Tipi, "ID", "Emri");
+            ViewBag.KlientID = new SelectList(db.Klient, "ID", "Username");
+            ViewBag.MakinatID = new SelectList(db.Makinat, "ID", "Modeli");
             return View();
         }
 
-        // POST: Makinats/Create
+        // POST: Rezervimet/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG,TipiID,ERezervuar")] Makinat makinat)
+        public ActionResult Create([Bind(Include = "ID,Date_Rezervimi,Date_kthimi,Pagesa_totale,KlientID,MakinatID")] Rezervimet rezervimet)
         {
             if (ModelState.IsValid)
             {
-                db.Makinat.Add(makinat);
+                db.Rezervimet.Add(rezervimet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TipiID = new SelectList(db.Tipi, "ID", "Emri", makinat.TipiID);
-            return View(makinat);
+            ViewBag.KlientID = new SelectList(db.Klient, "ID", "Username", rezervimet.KlientID);
+            ViewBag.MakinatID = new SelectList(db.Makinat, "ID", "Modeli", rezervimet.MakinatID);
+            return View(rezervimet);
         }
 
-        // GET: Makinats/Edit/5
+        // GET: Rezervimet/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Makinat makinat = db.Makinat.Find(id);
-            if (makinat == null)
+            Rezervimet rezervimet = db.Rezervimet.Find(id);
+            if (rezervimet == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TipiID = new SelectList(db.Tipi, "ID", "Emri", makinat.TipiID);
-            return View(makinat);
+            ViewBag.KlientID = new SelectList(db.Klient, "ID", "Username", rezervimet.KlientID);
+            ViewBag.MakinatID = new SelectList(db.Makinat, "ID", "Modeli", rezervimet.MakinatID);
+            return View(rezervimet);
         }
 
-        // POST: Makinats/Edit/5
+        // POST: Rezervimet/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG,TipiID")] Makinat makinat)
+        public ActionResult Edit([Bind(Include = "ID,Date_Rezervimi,Date_kthimi,Pagesa_totale,KlientID,MakinatID")] Rezervimet rezervimet)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(makinat).State = EntityState.Modified;
+                db.Entry(rezervimet).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TipiID = new SelectList(db.Tipi, "ID", "Emri", makinat.TipiID);
-            return View(makinat);
+            ViewBag.KlientID = new SelectList(db.Klient, "ID", "Username", rezervimet.KlientID);
+            ViewBag.MakinatID = new SelectList(db.Makinat, "ID", "Modeli", rezervimet.MakinatID);
+            return View(rezervimet);
         }
 
-        // GET: Makinats/Delete/5
+        // GET: Rezervimet/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Makinat makinat = db.Makinat.Find(id);
-            if (makinat == null)
+            Rezervimet rezervimet = db.Rezervimet.Find(id);
+            if (rezervimet == null)
             {
                 return HttpNotFound();
             }
-            return View(makinat);
+            return View(rezervimet);
         }
 
-        // POST: Makinats/Delete/5
+        // POST: Rezervimet/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Makinat makinat = db.Makinat.Find(id);
-            db.Makinat.Remove(makinat);
+            Rezervimet rezervimet = db.Rezervimet.Find(id);
+            db.Rezervimet.Remove(rezervimet);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

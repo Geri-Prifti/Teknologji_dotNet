@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MakinatsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RezervimetController.cs" />
     <Compile Include="Controllers\TipisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,10 +197,23 @@
     <Compile Include="Migrations\202201200816278_modify.Designer.cs">
       <DependentUpon>202201200816278_modify.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201211411534_NewTableClient.cs" />
+    <Compile Include="Migrations\202201211411534_NewTableClient.Designer.cs">
+      <DependentUpon>202201211411534_NewTableClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201211442384_newForeignKeyMakine.cs" />
+    <Compile Include="Migrations\202201211442384_newForeignKeyMakine.Designer.cs">
+      <DependentUpon>202201211442384_newForeignKeyMakine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201211444460_modifyRezervation.cs" />
+    <Compile Include="Migrations\202201211444460_modifyRezervation.Designer.cs">
+      <DependentUpon>202201211444460_modifyRezervation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Klient.cs" />
     <Compile Include="Models\Makinat.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rezervimet.cs" />
@@ -275,6 +289,11 @@
     <Content Include="Views\Tipis\Edit.cshtml" />
     <Content Include="Views\Tipis\Index.cshtml" />
     <Content Include="Views\Home\Kerko.cshtml" />
+    <Content Include="Views\Rezervimet\Create.cshtml" />
+    <Content Include="Views\Rezervimet\Delete.cshtml" />
+    <Content Include="Views\Rezervimet\Details.cshtml" />
+    <Content Include="Views\Rezervimet\Edit.cshtml" />
+    <Content Include="Views\Rezervimet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,6 +327,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201200816278_modify.resx">
       <DependentUpon>202201200816278_modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211411534_NewTableClient.resx">
+      <DependentUpon>202201211411534_NewTableClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211442384_newForeignKeyMakine.resx">
+      <DependentUpon>202201211442384_newForeignKeyMakine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211444460_modifyRezervation.resx">
+      <DependentUpon>202201211444460_modifyRezervation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
