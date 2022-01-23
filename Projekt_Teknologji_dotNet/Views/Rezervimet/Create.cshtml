@@ -4,6 +4,8 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="all-content">
+    <div class="max-width-c">
 @if (ViewBag.msg != null)
 {
     <h2>Kjo makine nuk eshte e disponueshme per momentin!</h2>
@@ -71,3 +73,5 @@ using (Html.BeginForm())
     @Html.ActionLink("Back to List", "Index")
 </div>
 }
+        </div>
+    </div>

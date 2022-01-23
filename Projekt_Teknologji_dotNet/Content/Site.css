@@ -110,7 +110,7 @@ form {
     }
 
 .max-width-c {
-    padding: 0 50px;
+    padding: 0 40px;
 }
 
 .container-nav {
@@ -124,6 +124,7 @@ form {
     justify-content: space-between;
     align-items: center;
     width: 40%;
+    font-size: 16px;
 }
 .container-nav .left-content form {
     display: flex;
@@ -137,7 +138,7 @@ form {
 }
 
 .right-content {
-    width: 55%;
+    width: 57%;
 }
 
     .right-content ul {
@@ -153,6 +154,7 @@ form {
         .right-content ul li a {
             text-decoration: none;
             color: white;
+            font-size: 16px;
         }
 
 .nav-right {
@@ -219,7 +221,7 @@ footer {
     footer ul {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
         list-style-type: none;
         padding: 0;
     }
@@ -232,7 +234,7 @@ footer {
 }
 
 .fb-right {
-    width: 55%;
+    width: 53%;
 }
 
 .fb-left {
@@ -317,7 +319,7 @@ footer p {
     height: 100vh;
     display: grid;
     grid-template-columns: 2fr 2fr 2fr 2fr;
-    grid-template-rows: 270px 270px 270px 270px;
+    grid-template-rows: 290px 290px 290px 290px;
     grid-gap: 30px;
 }
 
@@ -325,9 +327,10 @@ footer p {
     border: 1px solid gray;
     border-radius: 7px;
     padding: 1em;
-    height: 270px;
+    height: 290px;
     box-shadow: 5px 10px 18px #888888;
 }
+
 
 .main-content-cart .a-con, .b-con {
     width: 100%;
@@ -336,9 +339,20 @@ footer p {
     margin-top: 7px;
     font-size: 14px;
 }
+.main-content-cart .c-con {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    align-items: center;
+    font-size: 14px;
+}
+.main-content-cart .c-con .rezervuar {
+    display: flex;
+    align-items: center;
+}
 .main-content-cart .button-area {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20px; 
+    margin-top: 16px; 
 }

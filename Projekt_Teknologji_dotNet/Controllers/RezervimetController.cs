@@ -15,9 +15,16 @@ namespace Projekt_Teknologji_dotNet.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Rezervimet
+        [Authorize]
         public ActionResult Index()
         {
-            var rezervimet = db.Rezervimet.Include(r => r.Klient).Include(r => r.Makinat);
+            var user = System.Web.HttpContext.Current.User.Identity.Name;
+            var rezervimet = db.Rezervimet.Include(r => r.Klient).Include(r => r.Makinat).Where(r => r.Klient.Username == user);
+            /*if (!string.IsNullOrEmpty(user))
+            {
+                rezervimet = rezervimet.Where(r => r.Klient.Username == user);
+            }*/
+                
             return View(rezervimet.ToList());
         }
 
@@ -56,10 +63,8 @@ namespace Projekt_Teknologji_dotNet.Controllers
             if (ModelState.IsValid)
             {
                 var user = System.Web.HttpContext.Current.User.Identity.Name;
-                var klient = db.Klient.Where(m => m.Username == user);
-                var makine = db.Makinat.Where(m => m.ID == makineId);
-                makine.ToList();
-                klient.ToList();
+                var klient = db.Klient.Where(m => m.Username == user).ToList();
+                var makine = db.Makinat.Where(m => m.ID == makineId).ToList();
                 decimal pagesDite = 0;
                 foreach(var item in makine)
                 {

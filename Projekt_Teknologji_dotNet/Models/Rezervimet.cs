@@ -14,10 +14,12 @@ namespace Projekt_Teknologji_dotNet.Models
         public int ID { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         [Display(Name = "Date Rezervimi")]
         public DateTime Date_Rezervimi { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         [Display(Name = "Date Kthimi")]
         public DateTime Date_kthimi { get; set; }
 

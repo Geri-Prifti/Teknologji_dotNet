@@ -23,6 +23,7 @@ namespace Projekt_Teknologji_dotNet.Models
         [Display(Name = "V.Prodhimit")]
         public int Vit_Prodhimi { get; set; }
         [Required]
+        [Display(Name = "E disponueshme")]
         public bool ERezervuar { get; set; }
         [Required]
         [Display(Name = "Pagesa/D")]

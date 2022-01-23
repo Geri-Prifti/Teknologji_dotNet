@@ -106,7 +106,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
             return View(makinat);
         }
 
-        // GET: Makinats/Delete/5
+        /* GET: Makinats/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -130,6 +130,16 @@ namespace Projekt_Teknologji_dotNet.Controllers
             db.Makinat.Remove(makinat);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }*/
+
+        [HttpPost]
+        [Route("Makinats/Delete/{id}")]
+        public JsonResult Delete(int? id)
+        {
+            Makinat makinat = db.Makinat.Find(id);
+            db.Makinat.Remove(makinat);
+            int result = db.SaveChanges();
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
