@@ -234,6 +234,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\DropDownList.js" />
     <Content Include="Scripts\FshiMakine.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -298,6 +299,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Imazhet\Cars-Img\" />
     <Folder Include="Content\Imazhet\Uploaded\" />
   </ItemGroup>
   <ItemGroup>

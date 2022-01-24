@@ -14,7 +14,7 @@ namespace Projekt_Teknologji_dotNet.Models
         public int ID { get; set; }
 
         [Required]
-        [Display(Name = "Emri")]
+        [Display(Name = "Tipi")]
         public string Emri { get; set; }
         [Required]
         [Display(Name = "Ikona")]

@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Projekt_Teknologji_dotNet.Models;
 
@@ -60,11 +61,13 @@ namespace Projekt_Teknologji_dotNet.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG,TipiID,ERezervuar")] Makinat makinat)
+        public ActionResult Create(Makinat makinat, HttpPostedFileBase IMG)
         {
             if (ModelState.IsValid)
             {
-                db.Makinat.Add(makinat);
+                WebImage img = new WebImage(IMG.InputStream);
+                img.Save(Konstante.PathImgMakinat + IMG.FileName);
+                db.Makinat.Add(new Makinat { Modeli = makinat.Modeli, Pershkrimi = makinat.Pershkrimi, Vit_Prodhimi = makinat.Vit_Prodhimi, Kosto1Dite = makinat.Kosto1Dite, IMG = IMG.FileName, TipiID = makinat.TipiID, ERezervuar = makinat.ERezervuar});
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
