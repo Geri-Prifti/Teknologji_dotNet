@@ -48,7 +48,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         }
 
         // GET: Makinats/Create
-        [Authorize]
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         public ActionResult Create()
         {
             ViewBag.TipiID = new SelectList(db.Tipi, "ID", "Emri");
@@ -58,7 +58,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // POST: Makinats/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Makinat makinat, HttpPostedFileBase IMG)
@@ -76,7 +76,8 @@ namespace Projekt_Teknologji_dotNet.Controllers
             return View(makinat);
         }
 
-        // GET: Makinats/Edit/5
+        // GET: Makinats/Edit/
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,6 +96,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // POST: Makinats/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG,TipiID")] Makinat makinat)
@@ -108,33 +110,8 @@ namespace Projekt_Teknologji_dotNet.Controllers
             ViewBag.TipiID = new SelectList(db.Tipi, "ID", "Emri", makinat.TipiID);
             return View(makinat);
         }
-
-        /* GET: Makinats/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Makinat makinat = db.Makinat.Find(id);
-            if (makinat == null)
-            {
-                return HttpNotFound();
-            }
-            return View(makinat);
-        }
-
-        // POST: Makinats/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Makinat makinat = db.Makinat.Find(id);
-            db.Makinat.Remove(makinat);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }*/
-
+        //Delete Cars
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         [HttpPost]
         [Route("Makinats/Delete/{id}")]
         public JsonResult Delete(int? id)

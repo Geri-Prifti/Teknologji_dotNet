@@ -32,10 +32,11 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
-                        @if (Request.IsAuthenticated)
+                        @if (Request.IsAuthenticated && User.Identity.Name != "admirimkorici05@gmail.com")
                         {
                             <li>@Html.ActionLink("Rezervime", "Index", "Rezervimet")</li>
-                        } else
+                        } 
+                        @if (Request.IsAuthenticated && User.Identity.Name == "admirimkorici05@gmail.com")
                         {
                             <li>
                                 <div class="drop-down-list">
@@ -48,7 +49,7 @@
                                                 </svg> Menaxhimi
                                             </a>
                                             <ul class="sub">
-                                                <li><a href="/all_orders/" class="primary">Porosit</a></li>
+                                                <li>@Html.ActionLink("Rezervimet", "AllReservation", "Rezervimet")</li>
                                                 <li>@Html.ActionLink("Tipi makinave", "Index", "Tipis")</li>
                                                 <li><a href="#">Perdoruesit</a></li>
                                             </ul>

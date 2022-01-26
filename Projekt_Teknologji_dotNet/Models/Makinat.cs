@@ -11,7 +11,6 @@ namespace Projekt_Teknologji_dotNet.Models
     public class Makinat
     {
         [Required]
-        [Display(Name = "IdMakine")]
         public int ID { get; set; }
 
         [Required]

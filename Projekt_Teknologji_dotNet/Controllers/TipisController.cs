@@ -16,27 +16,15 @@ namespace Projekt_Teknologji_dotNet.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tipis
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         public ActionResult Index()
         {
             return View(db.Tipi.ToList());
         }
 
-        // GET: Tipis/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Tipi tipi = db.Tipi.Find(id);
-            if (tipi == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tipi);
-        }
 
         // GET: Tipis/Create
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +35,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         public ActionResult Create (Tipi tipi, HttpPostedFileBase Ikona)
         {
             if (ModelState.IsValid)
@@ -62,6 +51,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         }
 
         // GET: Tipis/Edit/5
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +69,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         // POST: Tipis/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Emri,Ikona")] Tipi tipi)
@@ -93,6 +84,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         }
 
         // GET: Tipis/Delete/5
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +100,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
         }
 
         // POST: Tipis/Delete/5
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

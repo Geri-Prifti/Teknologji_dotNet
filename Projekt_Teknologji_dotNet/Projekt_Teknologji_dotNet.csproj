@@ -281,21 +281,18 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Makinats\Create.cshtml" />
-    <Content Include="Views\Makinats\Delete.cshtml" />
     <Content Include="Views\Makinats\Details.cshtml" />
     <Content Include="Views\Makinats\Edit.cshtml" />
     <Content Include="Views\Makinats\Index.cshtml" />
     <Content Include="Views\Tipis\Create.cshtml" />
     <Content Include="Views\Tipis\Delete.cshtml" />
-    <Content Include="Views\Tipis\Details.cshtml" />
     <Content Include="Views\Tipis\Edit.cshtml" />
     <Content Include="Views\Tipis\Index.cshtml" />
     <Content Include="Views\Home\Kerko.cshtml" />
     <Content Include="Views\Rezervimet\Create.cshtml" />
     <Content Include="Views\Rezervimet\Delete.cshtml" />
-    <Content Include="Views\Rezervimet\Details.cshtml" />
-    <Content Include="Views\Rezervimet\Edit.cshtml" />
     <Content Include="Views\Rezervimet\Index.cshtml" />
+    <Content Include="Views\Rezervimet\AllReservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

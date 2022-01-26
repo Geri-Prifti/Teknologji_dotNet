@@ -27,20 +27,11 @@ namespace Projekt_Teknologji_dotNet.Controllers
                 
             return View(rezervimet.ToList());
         }
-
-        // GET: Rezervimet/Details/5
-        public ActionResult Details(int? id)
+        [Authorize(Users = "admirimkorici05@gmail.com")]
+        public ActionResult AllReservation()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Rezervimet rezervimet = db.Rezervimet.Find(id);
-            if (rezervimet == null)
-            {
-                return HttpNotFound();
-            }
-            return View(rezervimet);
+            var rezervimet = db.Rezervimet.Include(r => r.Klient).Include(r => r.Makinat);
+            return View(rezervimet.ToList());
         }
 
         // GET: Rezervimet/Create
@@ -98,40 +89,6 @@ namespace Projekt_Teknologji_dotNet.Controllers
             return View(rezervimet);
         }
 
-        // GET: Rezervimet/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Rezervimet rezervimet = db.Rezervimet.Find(id);
-            if (rezervimet == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.KlientID = new SelectList(db.Klient, "ID", "Username", rezervimet.KlientID);
-            ViewBag.MakinatID = new SelectList(db.Makinat, "ID", "Modeli", rezervimet.MakinatID);
-            return View(rezervimet);
-        }
-
-        // POST: Rezervimet/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Date_Rezervimi,Date_kthimi,Pagesa_totale,KlientID,MakinatID")] Rezervimet rezervimet)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(rezervimet).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.KlientID = new SelectList(db.Klient, "ID", "Username", rezervimet.KlientID);
-            ViewBag.MakinatID = new SelectList(db.Makinat, "ID", "Modeli", rezervimet.MakinatID);
-            return View(rezervimet);
-        }
 
         // GET: Rezervimet/Delete/5
         public ActionResult Delete(int? id)

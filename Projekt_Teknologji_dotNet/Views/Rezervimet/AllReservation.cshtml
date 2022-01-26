@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Projekt_Teknologji_dotNet.Models.Rezervimet>
+@{
+    ViewBag.Title = "AllReservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="all-content">
+    <div class="max-width-c">
+        <h2>Te gjitha rezervimet</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Klient.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Makinat.Modeli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date_Rezervimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date_kthimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pagesa_totale)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Klient.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Makinat.Modeli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date_Rezervimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date_kthimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pagesa_totale)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Dorezuar", "Delete", new { id = item.ID})
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
