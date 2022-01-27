@@ -152,13 +152,13 @@ namespace Projekt_Teknologji_dotNet.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    db.Klient.Add(new Klient { Username = model.Email });
+                    db.Klient.Add(new Klient { Username = model.Email, PhoneNumber = model.PhoneNumber });
                     db.SaveChanges();
                     
                     return RedirectToAction("Index", "Home");

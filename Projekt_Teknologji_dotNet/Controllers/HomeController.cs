@@ -62,5 +62,11 @@ namespace Projekt_Teknologji.NET.Controllers
             ViewBag.msg2 = q;
             return View(makinat.ToList());
         }
+        [Authorize(Users = "admirimkorici05@gmail.com")]
+        public ActionResult Klientet()
+        {
+            var klientet = db.Klient;
+            return View(klientet.ToList());
+        }
     }
 }

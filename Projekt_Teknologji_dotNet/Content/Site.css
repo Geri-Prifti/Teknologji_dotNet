@@ -385,3 +385,36 @@ footer p {
     justify-content: center;
     margin-top: 16px; 
 }
+/*Car Details*/
+.main-content-datails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-content-datails .left-details {
+    width: 48%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-content-datails .right-details {
+    width: 48%;
+    min-height: 100vh;
+}
+.main-content-datails .left-details img {
+    width: 100%;
+    height: 80vh;
+    border-radius: 8px
+}
+.right-details .text-content {
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+.right-details .btn-details {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}

@@ -20,10 +20,6 @@ namespace Projekt_Teknologji_dotNet.Controllers
         {
             var user = System.Web.HttpContext.Current.User.Identity.Name;
             var rezervimet = db.Rezervimet.Include(r => r.Klient).Include(r => r.Makinat).Where(r => r.Klient.Username == user);
-            /*if (!string.IsNullOrEmpty(user))
-            {
-                rezervimet = rezervimet.Where(r => r.Klient.Username == user);
-            }*/
                 
             return View(rezervimet.ToList());
         }
@@ -36,8 +32,17 @@ namespace Projekt_Teknologji_dotNet.Controllers
 
         // GET: Rezervimet/Create
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(int? makineID)
         {
+            var makine = db.Makinat.Where(m => m.ID == makineID).ToList();
+            foreach (var item in makine)
+            {
+                if (item.ERezervuar == true)
+                {
+                    ViewBag.msg = "Error";
+                }
+                ViewBag.Emakine = item.Modeli;
+            }
             ViewBag.KlientID = new SelectList(db.Klient, "ID", "Username");
             ViewBag.MakinatID = new SelectList(db.Makinat, "ID", "Modeli");
             return View();
@@ -59,11 +64,6 @@ namespace Projekt_Teknologji_dotNet.Controllers
                 decimal pagesDite = 0;
                 foreach(var item in makine)
                 {
-                    if(item.ERezervuar == true)
-                    {
-                        ViewBag.msg = "Error";
-                    }
-
                     pagesDite = item.Kosto1Dite;
                 }
                 DateTime dt1 = rezervimet.Date_Rezervimi;
@@ -113,7 +113,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
             Rezervimet rezervimet = db.Rezervimet.Find(id);
             db.Rezervimet.Remove(rezervimet);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("AllReservation");
         }
 
         protected override void Dispose(bool disposing)

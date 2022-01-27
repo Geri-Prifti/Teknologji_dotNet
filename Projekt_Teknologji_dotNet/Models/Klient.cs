@@ -15,5 +15,8 @@ namespace Projekt_Teknologji_dotNet.Models
 
         [Required]
         public string Username { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 }

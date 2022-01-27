@@ -6,8 +6,67 @@
 }
 <div class="all-content">
     <div class="max-width-c">
+        <div class="main-content-datails">
+            <div class="left-details">
+                <img src="~/Content/Imazhet/Cars-Img/@Html.DisplayFor(model => model.IMG)" alt="@Html.DisplayFor(model => model.IMG)" />
+            </div>
+            <div class="right-details">
+                <div class="text-content">
+                    <div>
+                        <b>@Html.DisplayNameFor(model => model.Modeli):</b>
+                        @Html.DisplayFor(model => model.Modeli)
+                    </div>
+                    <div>
+                        <b>@Html.DisplayNameFor(model => model.Tipi.Emri):</b>
+                        @Html.DisplayFor(model => model.Tipi.Emri)
+                    </div>
+                </div>
+                <p class="pershkrimi"><b>@Html.DisplayNameFor(model => model.Pershkrimi)</b>: @Html.DisplayFor(model => model.Pershkrimi)</p>
+                <div class="text-content">
+                    <div>
+                        <b>@Html.DisplayNameFor(model => model.Kosto1Dite)</b>:
+                        @Html.DisplayFor(model => model.Kosto1Dite)£
+                    </div>
+                    <div>
+                        <b>@Html.DisplayNameFor(model => model.Vit_Prodhimi)</b>:
+                        @Html.DisplayFor(model => model.Vit_Prodhimi)
+                    </div>
+                </div>
+                <div class="text-content">
+                    <div class="rezervuar">
+                        @Html.LabelFor(model => model.ERezervuar) ___
+                                        @if (Model.ERezervuar)
+                                        {<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                        }
+                                        else
+                                        {
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                        }
+                    </div>
+                </div>
+                <div class="btn-details">
+                    @if (Request.IsAuthenticated && User.Identity.Name == "admirimkorici05@gmail.com")
+                    {
+                        @Html.ActionLink("Modifiko", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary"})
+                    }
+                    else 
+                    if (Model.ERezervuar == false && User.Identity.Name != "admirimkorici05@gmail.com")
+                    {
+                        <a href="/Rezervimet/Create?makineId=@Model.ID" class="btn btn-success">Rezervo</a>
+                    }
+                    else
+                    {
+                        <b class="text-danger">Kjo makine nuk eshte e disponueshme per momentin</b>
+                    }
 
-        <h2>Details</h2>
+                </div>
+        </div>
+
+        <!--<h2>Details</h2>
         <div>
             <hr />
             <dl class="dl-horizontal">
@@ -65,7 +124,7 @@
             @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
             @Html.ActionLink("Back to List", "Index") |
             <a href="/Rezervimet/Create?makineId=@Model.ID">Rezervo</a>
-        </p>
+        </p>-->
             </div>
     </div>
 

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Projekt_Teknologji_dotNet.Models.Klient>
+
+@{
+    ViewBag.Title = "Klientet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="all-content">
+    <div class="max-width-c">
+        <h2>Klientet</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+            </tr>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                </tr>
+            }
+        </table>
+        </div>
+    </div>
+
