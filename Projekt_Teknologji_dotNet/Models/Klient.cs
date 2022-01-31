@@ -14,9 +14,10 @@ namespace Projekt_Teknologji_dotNet.Models
         public int ID { get; set; }
 
         [Required]
+        [Display(Name = "Klienti")]
         public string Username { get; set; }
 
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Numer telefoni")]
         public string PhoneNumber { get; set; }
     }
 }

@@ -59,26 +59,21 @@ namespace Projekt_Teknologji_dotNet.Controllers
             if (ModelState.IsValid)
             {
                 var user = System.Web.HttpContext.Current.User.Identity.Name;
-                var klient = db.Klient.Where(m => m.Username == user).ToList();
-                var makine = db.Makinat.Where(m => m.ID == makineId).ToList();
-                decimal pagesDite = 0;
-                foreach(var item in makine)
-                {
-                    pagesDite = item.Kosto1Dite;
-                }
+                var klient = db.Klient.Where(m => m.Username == user).SingleOrDefault();
+                var makine = db.Makinat.Where(m => m.ID == makineId).SingleOrDefault();
+                decimal pagesDite = makine.Kosto1Dite;
+                var klientId = klient.ID;
+                //scripti per llogaritjen e pageses totale per makinen
                 DateTime dt1 = rezervimet.Date_Rezervimi;
                 DateTime dt2 = rezervimet.Date_kthimi;
                 TimeSpan span = dt2.Subtract(dt1);
-                decimal spanSecs = (span.Hours * 3600) + (span.Minutes * 60) + span.Seconds;
-                decimal spanPart = spanSecs / 86400M;
-                decimal result2 = span.Days + spanPart;
-                decimal result3 = result2 * pagesDite;
-                var klientId = 0;
-                foreach (var item in klient)
-                {
-                    klientId = item.ID;   
-                }
-                db.Rezervimet.Add(new Rezervimet { Date_Rezervimi = rezervimet.Date_Rezervimi, Date_kthimi = rezervimet.Date_kthimi, Pagesa_totale = result3, KlientID = klientId, MakinatID = makineId });
+                var result = span.Days;
+                decimal result2 = result * pagesDite;
+
+                db.Rezervimet.Add(new Rezervimet { Date_Rezervimi = rezervimet.Date_Rezervimi, Date_kthimi = rezervimet.Date_kthimi, Pagesa_totale = result2, KlientID = klientId, MakinatID = makineId });
+
+                var result1 = db.Makinat.Where(m => m.ID == makineId).SingleOrDefault();
+                result1.ERezervuar = true;
                 db.SaveChanges();
                 
                 return RedirectToAction("Index");
@@ -102,6 +97,15 @@ namespace Projekt_Teknologji_dotNet.Controllers
             {
                 return HttpNotFound();
             }
+            else
+            {
+                var rezervim = db.Rezervimet.Where(m => m.ID == id).SingleOrDefault();
+                var makineid = rezervim.MakinatID;
+                var result = db.Makinat.Where(m => m.ID == makineid).SingleOrDefault();
+                result.ERezervuar = false;
+                db.SaveChanges();
+            }
+            
             return View(rezervimet);
         }
 
@@ -112,6 +116,11 @@ namespace Projekt_Teknologji_dotNet.Controllers
         {
             Rezervimet rezervimet = db.Rezervimet.Find(id);
             db.Rezervimet.Remove(rezervimet);
+
+            /*var rezervim = db.Rezervimet.Where(m => m.ID == id).SingleOrDefault();
+            var makineid = rezervim.MakinatID;
+            var result = db.Makinat.Where(m => m.ID == makineid).SingleOrDefault();
+            result.ERezervuar = false;*/
             db.SaveChanges();
             return RedirectToAction("AllReservation");
         }

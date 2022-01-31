@@ -56,11 +56,11 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("Delete", "Rezervimet", FormMethod.Post)) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="E dorezuar" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "AllReservation")
         </div>
     }

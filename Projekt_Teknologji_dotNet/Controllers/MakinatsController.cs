@@ -99,11 +99,13 @@ namespace Projekt_Teknologji_dotNet.Controllers
         [Authorize(Users = "admirimkorici05@gmail.com")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Modeli,Pershkrimi,Vit_Prodhimi,Kosto1Dite,IMG,TipiID")] Makinat makinat)
+        public ActionResult Edit( Makinat makinat, HttpPostedFileBase IMG)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(makinat).State = EntityState.Modified;
+                WebImage img = new WebImage(IMG.InputStream);
+                img.Save(Konstante.PathImgMakinat + IMG.FileName);
+                db.Entry(new Makinat { ID = makinat.ID, Modeli = makinat.Modeli, Pershkrimi = makinat.Pershkrimi, Vit_Prodhimi = makinat.Vit_Prodhimi, Kosto1Dite = makinat.Kosto1Dite, IMG = IMG.FileName, TipiID = makinat.TipiID, ERezervuar = makinat.ERezervuar }).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

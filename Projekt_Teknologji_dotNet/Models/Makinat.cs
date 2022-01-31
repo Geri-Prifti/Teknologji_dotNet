@@ -26,6 +26,7 @@ namespace Projekt_Teknologji_dotNet.Models
         public bool ERezervuar { get; set; }
         [Required]
         [Display(Name = "Pagesa/D")]
+        [DataType(DataType.Currency)]
         public decimal Kosto1Dite { get; set; }
         
         [Display(Name = "Imazhi ")]

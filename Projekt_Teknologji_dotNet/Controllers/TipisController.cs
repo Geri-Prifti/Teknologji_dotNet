@@ -72,11 +72,13 @@ namespace Projekt_Teknologji_dotNet.Controllers
         [Authorize(Users = "admirimkorici05@gmail.com")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Emri,Ikona")] Tipi tipi)
+        public ActionResult Edit(Tipi tipi, HttpPostedFileBase Ikona)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tipi).State = EntityState.Modified;
+                WebImage img = new WebImage(Ikona.InputStream);
+                img.Save(Konstante.PathImg + Ikona.FileName);
+                db.Entry(new Tipi {ID = tipi.ID, Emri = tipi.Emri, Ikona = Ikona.FileName }).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

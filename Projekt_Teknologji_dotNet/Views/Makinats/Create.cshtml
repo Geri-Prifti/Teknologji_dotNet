@@ -51,12 +51,10 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ERezervuar, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                    @Html.LabelFor(model => model.ERezervuar, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.ERezervuar)
-                            @Html.ValidationMessageFor(model => model.ERezervuar, "", new { @class = "text-danger" })
-                        </div>
+                        @Html.EditorFor(model => model.ERezervuar)
+                        @Html.ValidationMessageFor(model => model.ERezervuar, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
