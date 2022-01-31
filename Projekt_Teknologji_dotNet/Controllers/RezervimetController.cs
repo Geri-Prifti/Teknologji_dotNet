@@ -86,6 +86,7 @@ namespace Projekt_Teknologji_dotNet.Controllers
 
 
         // GET: Rezervimet/Delete/5
+        [Authorize(Users = "admirimkorici05@gmail.com")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,11 +117,6 @@ namespace Projekt_Teknologji_dotNet.Controllers
         {
             Rezervimet rezervimet = db.Rezervimet.Find(id);
             db.Rezervimet.Remove(rezervimet);
-
-            /*var rezervim = db.Rezervimet.Where(m => m.ID == id).SingleOrDefault();
-            var makineid = rezervim.MakinatID;
-            var result = db.Makinat.Where(m => m.ID == makineid).SingleOrDefault();
-            result.ERezervuar = false;*/
             db.SaveChanges();
             return RedirectToAction("AllReservation");
         }
